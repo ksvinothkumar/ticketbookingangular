@@ -1,0 +1,31 @@
+
+<!-- {{movieHallList | json}} -->
+<div *ngIf='movieHallList'>
+<div *ngFor="let hall of movieHallList.result; let hallIndex=index">
+   <h4>Hall Name: {{hall.hallName}}</h4>
+
+    <div class="card" *ngFor='let screen of hall.screens; let screenIndex=index'>
+        <div class="card-body">
+         <h5> {{screen.screenName}}</h5>
+          <div *ngFor='let time of screen.showTimings; let timeIndex=index'>
+              Total seats: {{time.totalSeats}}
+              Available seats: {{time.availableSeats}}
+          <h6><span class="badge badge-secondary"  routerLink="../../ticketbook/{{movieId}}/{{hall.id}}/{{screen.id}}/{{time.id}}" > {{time.showTime}}</span></h6>
+          <!-- <input type="text" class="form-control" [(ngModel)]="noOfTickets"  placeholder="Enter no of seats" style="width: 15%;"> -->
+          <!-- <button type="button" class="btn btn-success btn-sm" (click)="bookTicket(hall.id,screen.id,time.id, hallIndex, screenIndex, timeIndex )">Book</button> -->
+          </div>
+
+        </div>
+      </div>
+    <!-- <div *ngFor='let screen of hall.screens'>
+        {{screen.screenName}}
+        <div *ngFor='let time of screen.showTimings'>
+            {{time.showTime}}
+            {{time.totalSeats}}
+            {{time.availableSeats}}
+            </div>
+        </div> -->
+
+
+</div>
+</div>
